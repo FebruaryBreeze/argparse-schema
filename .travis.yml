@@ -1,0 +1,21 @@
+language: python
+cache: pip
+python:
+  - '3.6'
+install:
+  - pip install flake8 pytest pytest-cov codecov -U
+script:
+  - python -m flake8
+  - python -m pytest --cov=argparse_schema
+  - python setup.py install
+  - argparse-schema tests/argument_config.json
+after_success:
+  - codecov --token=526952af-b40a-43f2-aeb6-9b0277eb0223
+deploy:
+  provider: pypi
+  user: sfzhou
+  on:
+    branch: master
+  skip_existing: true
+  password:
+    secure: ELhs1rrra6ZA7VKccxBX/IclJFJbbDpzVmpbaKkk++Pt1YYtCUbGFUPqHAENhXsAlosdXnkNVp0WNSYKvstY2rdHDocyYQViqcx6Ta1fKceTUu1QM7hN4lTPTvmWpZ1BJxvjLqnffg706xjWpMjGPAML7QhxHqW+IaEm7EBWTSnuLE5nYY9bpMvx2khaukBjE6C3oct/NkFDbiP5WimvBihRGippluemz5FCB6+v5WK2tuoIXUA7/zl6+H8LQeNV1OHMK3BUWDefZn0GGy8qUHe6D7B93JkOViv44LRKKGTTPDBeFO1kmR3UJFvfvsBvwPCkQy2ZC1bnv73iVxbd/gQ4BNgBmPYJG53LCHM7w9RNRMjcuZrLGnHVu3j7aG3uzQ9gX4LfUlHdgUU7r7OkbJKe48q77MDpc6TSFUwejyKl/vneOHXAgGbIelcXQ3uN9iHpGB6sb1b+RAbAiuofTxjK9idowgwQ+k+Rl2onI/3cfJ7y9btQ9BVFt09ceNnG0h5Qf5+whxgJTo4nXd267ijWapbXS/MX9b5cCyNQ8cl1eLYqTFBWJ+XFTR5fLfyQkWDQNqndfW0rB8kZW+Dz8LvOnjV0ag63F3odCRNCqtdNN7pe/dS9JPGxGkcydSm++Pw89CKm0iM2fCBu6Q+Wfm25SMsM0NBRUyz4PZSnezk=

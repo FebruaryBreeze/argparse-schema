@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "argument_config",
+  "description": "Arg-parse Schema UnitTest",
+  "type": "object",
+  "properties": {
+    "config": {
+      "type": "string",
+      "positional": true,
+      "description": "path of config file"
+    },
+    "resume": {
+      "type": "boolean",
+      "description": "resume from checkpoint or not"
+    },
+    "scale": {
+      "type": "number",
+      "default": 1.0,
+      "description": "scale of image"
+    },
+    "mode": {
+      "enum": [
+        "happy",
+        "high",
+        "heaven"
+      ],
+      "default": "happy",
+      "description": "speed mode"
+    }
+  },
+  "required": [
+    "config"
+  ]
+}
